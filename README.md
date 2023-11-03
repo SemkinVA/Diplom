@@ -86,13 +86,13 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 <details>
 <summary> Скриншот окна вывода Terraform Output после завершения</summary>
    
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+![1](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/1.png)
 
 </details>
 <details>
 <summary> Скриншот развернутой инфраструктура Terraform </summary>
    
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+![2](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/2.png)
 
 </details>
 
@@ -128,75 +128,77 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 На хосте Bastion вводим "curl -v 158.160.128.141:80"
 
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+![3е](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/3.png)
 
 Или в любом браузере "158.160.128.141:80"
 
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+![4](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/4.PNG)
 
 ### Проверяем работу мониторинга
 
-На хосте prometheus проверяем сбор метрик командой "curl http://192.168.20.15:9090/metrics"
+На хосте prometheus проверяем его статус и сбор метрик командой "curl http://192.168.20.15:9090/metrics"
 
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+![6](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/6.png)
+
+![5](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/5.png)
 
 На  хостах webserver1 и webserver2 проверяем работу Node-exporters и Nginx Log Exporter
 
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+![6](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/7.png)
 
 Из любого браузера заходим на Grafana по ip: "158.160.116.109:3000" Пользователь: admin пароль: 123456
 
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+![7](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/8.PNG)
 
 После входа проверяем необходимый Dashboard 
 
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+![18](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/18.PNG)
 
 <details>
 <summary> Производимые настройки в Grafana </summary>
 Привязываем Prometheus
    
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+![9](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/9.PNG)
    
 Импортируем Dashboard №1860 "Node Exporter Full" 
 
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+![10](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/10.PNG)
 
 Отображение графиков
 
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+![19](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/19.PNG)
 
 Настройка tresholds
 
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+![1](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/11.PNG)
 </details>
 
 ### Проверяем работу сбора Логов
 
 На хосте elasticsearch проверяем работу хоста командой "192,168,20,10:9200/_cluster/health?pretty"
 
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+![12]https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/12.png)
 
 Из любого браузера заходим на Kibana по ip: "51.250.13.174:5601" 
 
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+![13](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/13.PNG)
 
 Переходим в Discover и выбиваем необходимые параметры для просмотра
 
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+![14](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/14.PNG)
 
 
 <details>
 <summary> Производимые настройки в Kibana </summary>
 Переходим в менеджмент Kibana и добавляем новый индекс
    
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+![15]([https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/15.PNG))
 
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+![16](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/16.PNG)
 </details>
 
 ### Проверяем работу резервного копирования дисков
 
 В интерфейсе YandexCloud смотрим информацию по резервному копированию дисков
 
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+![17](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/17.PNGg)
