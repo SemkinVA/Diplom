@@ -241,7 +241,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 ### Проверяем работу сбора Логов
 
-На хосте elasticsearch проверяем работу хоста командой "localhost:9200/_cluster/health?pretty"
+На хосте elasticsearch проверяем работу хоста командой "192,168,20,10:9200/_cluster/health?pretty"
 
 ![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
 
