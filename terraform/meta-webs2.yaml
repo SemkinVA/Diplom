@@ -1,0 +1,28 @@
+#cloud-config
+ timezone: Europe/Moscow
+ hostname: webserver2
+ users:
+  - name: semkin
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIORlBXqUeXBCR1C6/uXp2IBV2tpO+YGnQ1e7Evlf8DNK semkin@debian
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGgOsg+hkZQuBS407gXUeTGNNiLtuAPm4uhISwc/bs/K semkin@debian
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIORlBXqUeXBCR1C6/uXp2IBV2tpO+YGnQ1e7Evlf8DNK semkin@bastion
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGgOsg+hkZQuBS407gXUeTGNNiLtuAPm4uhISwc/bs/K semkin@bastion
+      
+ allow_public_ssh_keys: true
+ 
+ ssh_pwauth: false
+ 
+ chpasswd:
+  expire: false
+  users:
+    - name: semkin
+      password: 1234
+      type: text
+    - name: root
+      password: 1234
+      type: text 
+

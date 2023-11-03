@@ -1,0 +1,33 @@
+[elastic]
+192.168.20.10 ansible_user=semkin ansible_ssh_private_key_file=/home/semkin/.ssh/id_ed25519 ansible_connection=ssh
+[grafana]
+192.168.10.15 ansible_user=semkin ansible_ssh_private_key_file=/home/semkin/.ssh/id_ed25519 ansible_connection=ssh
+[kibana]
+192.168.10.10 ansible_user=semkin ansible_ssh_private_key_file=/home/semkin/.ssh/id_ed25519 ansible_connection=ssh
+[prom]
+192.168.20.15 ansible_user=semkin ansible_ssh_private_key_file=/home/semkin/.ssh/id_ed25519 ansible_connection=ssh
+[webs]
+192.168.10.25 ansible_user=semkin ansible_ssh_private_key_file=/home/semkin/.ssh/id_ed25519 ansible_connection=ssh
+192.168.20.25 ansible_user=semkin ansible_ssh_private_key_file=/home/semkin/.ssh/id_ed25519 ansible_connection=ssh
+
+
+ssh 51.250.34.213 
+
+ssh -i ~/.ssh/id_ed25519 -J semkin@51.250.34.213 semkin@192.168.
+
+
+[bastion]
+192.168.30.30 bastion
+[elasticsearch]
+192.168.20.10 elastic
+[grafana]
+192.168.10.15 grafana
+[kibana]
+192.168.10.10 kibana
+[prometheus]
+192.168.20.15 prom
+[webs]
+192.168.10.25 web-1
+192.168.20.25 web-2
+
+
