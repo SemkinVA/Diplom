@@ -201,4 +201,4 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 В интерфейсе YandexCloud смотрим информацию по резервному копированию дисков
 
-![17](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/17.PNGg)
+![17](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/17.PNG)
