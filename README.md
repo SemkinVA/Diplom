@@ -144,7 +144,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 ![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
 
-Из любого браузера заходим на Grafana по ip: "84.150.48.37:3000" Пользователь: admin пароль: 123456
+Из любого браузера заходим на Grafana по ip: "158.160.116.109:3000" Пользователь: admin пароль: 123456
 
 ![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
 
@@ -205,7 +205,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 ![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
 
-Из любого браузера заходим на Kibana по ip: "84.158.28.76:5601" 
+Из любого браузера заходим на Kibana по ip: "51.250.13.174:5601" 
 
 ![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
 
