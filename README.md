@@ -92,7 +92,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 <details>
 <summary> Скриншот развернутой инфраструктура Terraform </summary>
    
-![2](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/2.png)
+![2](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/2.PNG)
 
 </details>
 
