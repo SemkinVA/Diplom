@@ -1,0 +1,64 @@
+---
+#установка Nginx на Web сервера
+- hosts: webs
+  user: semkin
+  become: true
+  become_user: root
+  roles:
+    - nginx
+
+#установка Elasticsearch на сервер Elastic
+- hosts: elastic
+  user: semkin
+  become: true
+  become_user: root
+  roles:
+    - elasticsearch
+
+#установка Kibana на сервер Kibana
+- hosts: kibana
+  user: semkin
+  become: true
+  become_user: root
+  roles:
+    - kibana
+
+#установка Filebeat на Web сервера
+- hosts: webs
+  user: semkin
+  become: true
+  become_user: root
+  roles:
+    - filebeat
+
+#установка Prometheus на сервак Prom
+- hosts: prom
+  user: semkin
+  become: true
+  become_user: root
+  roles:
+    - prometheus
+
+#установка Grafana на Web Grafana
+- hosts: grafana
+  user: semkin
+  become: true
+  become_user: root
+  roles:
+    - grafana
+
+#установка Node-exporters на Web сервера
+- hosts: webs
+  user: semkin
+  become: true
+  become_user: root
+  roles:
+    - node-exporters
+
+#установка Nginx Log Exporter на Web сервера
+- hosts: webs
+  user: semkin
+  become: true
+  become_user: root
+  roles:
+    - nginx-log-exporter

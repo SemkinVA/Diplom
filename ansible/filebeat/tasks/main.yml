@@ -1,0 +1,41 @@
+---
+#-----------Установка файлбита------------
+- name: Обновление кэша APT
+  apt:
+    update_cache: true
+
+- name: Устанавка - apt-transport-https, gnupg, gnupg1, gnupg2
+  apt:
+    pkg:
+      - apt-transport-https
+      - gnupg
+      - gnupg1
+      - gnupg2
+    state: present
+
+- name: Установка Filebeat
+  ansible.builtin.apt:
+    deb: https://mirror.yandex.ru/mirrors/elastic/7/pool/main/f/filebeat/filebeat-7.17.14-amd64.deb  
+
+- name: Обновление конфигурации systemd и запуск Filebeat
+  systemd:
+    daemon_reload: true
+    name: filebeat.service
+    enabled: yes
+    state: started
+
+- name: Копирование конфигурационного файла Filebeat
+  copy:
+    src: templates/filebeat.yml
+    dest: /etc/filebeat
+    mode: 0600
+    owner: root
+    group: root 
+
+- name: Перезапуск Filebeat для обновления конфигурации
+  systemd:
+    name: filebeat.service
+    state: restarted
+#---------------------------------------
+
+

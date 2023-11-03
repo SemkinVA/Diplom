@@ -1,0 +1,39 @@
+---
+#-----------Установка Elasticsearch------------
+- name: Обновление кэша APT
+  apt:
+    update_cache: true
+
+- name: Устанавка - apt-transport-https, gnupg, gnupg1, gnupg2
+  apt:
+    name:
+      - apt-transport-https
+      - gnupg
+      - gnupg1
+      - gnupg2
+    state: present
+
+- name: Установка Elasticsearch
+  ansible.builtin.apt:
+    deb: https://mirror.yandex.ru/mirrors/elastic/7/pool/main/e/elasticsearch/elasticsearch-7.17.14-amd64.deb
+
+- name: Обновление конфигурации systemd и запуск Elasticsearch
+  systemd:
+    daemon_reload: true
+    name: elasticsearch.service
+    enabled: yes
+    state: started
+    
+- name: Копирование конфигурационного файла Elasticsearch
+  copy:
+    src: templates/elasticsearch.yml
+    dest: /etc/elasticsearch
+    mode: 0660
+    owner: root
+    group: elasticsearch 
+
+- name: Перезапуск Elasticsearch для обновления конфигурации
+  systemd:
+    name: elasticsearch.service
+    state: restarted
+#---------------------------------------

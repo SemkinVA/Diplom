@@ -1,0 +1,41 @@
+---
+#-----------Установка кибана------------
+- name: Обновление кэша APT
+  apt:
+    update_cache: true
+
+- name: Устанавка - apt-transport-https, gnupg, gnupg1, gnupg2
+  apt:
+    pkg:
+      - apt-transport-https
+      - gnupg
+      - gnupg1
+      - gnupg2
+    state: present
+
+- name: Установка Kibana
+  ansible.builtin.apt:
+    deb: https://mirror.yandex.ru/mirrors/elastic/7/pool/main/k/kibana/kibana-7.17.14-amd64.deb 
+
+- name: Обновление конфигурации systemd и запуск Kibana
+  systemd:
+    daemon_reload: true
+    name: kibana.service
+    enabled: yes
+    state: started
+
+- name: Копирование конфигурационного файла Kibana
+  copy:
+    src: templates/kibana.yml
+    dest: /etc/kibana
+    mode: 0644
+    owner: root
+    group: 
+
+- name: Перезапуск Kibana для обновления конфигурации
+  systemd:
+    name: kibana.service
+    state: restarted
+#---------------------------------------
+
+

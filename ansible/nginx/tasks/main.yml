@@ -1,0 +1,21 @@
+---
+#-----------Установка Nginx------------
+- name: Обновление кэша APT
+  apt:
+    update_cache: true
+
+- name: Устанавка Nginx
+  ansible.builtin.apt:
+    name: nginx
+    state: latest
+
+- name: Изменение web site
+  ansible.builtin.copy:
+    src: templates/index.nginx-debian.html
+    dest: /var/www/html/index.nginx-debian.html
+    owner: semkin
+    group: semkin
+    mode: '0644'
+#---------------------------------------
+
+

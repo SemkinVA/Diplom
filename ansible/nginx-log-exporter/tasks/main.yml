@@ -1,0 +1,25 @@
+---
+#-----------Установка Nginx Log Exporter------------
+- name: Установка Nginx Log Exporter
+  apt:
+    deb: https://github.com/martin-helmich/prometheus-nginxlog-exporter/releases/download/v1.11.0/prometheus-nginxlog-exporter_1.11.0_linux_amd64.deb
+    state: present
+
+- name: Добавляем /etc/prometheus-nginxlog-exporter.hcl
+  template:
+    src: templates/config
+    dest: /etc/prometheus-nginxlog-exporter.yml
+
+- name: Изменения конфигурационного файла Nginx Log Exporter
+  template:
+    src: templates/service
+    dest: /etc/systemd/system/prometheus-nginxlog-exporter.service
+
+- name: Обновление конфигурации systemd и запуск Nginx Log Exporter
+  systemd:
+    daemon_reload: true
+    name: prometheus-nginxlog-exporter
+    state: started
+    enabled: yes
+
+#---------------------------------------

@@ -1,0 +1,68 @@
+---
+#-----------Установка Node-exporter ------------
+- name: Создание группы Node-exporter
+  group:
+    name: prometheus
+    state: present
+    system: true
+
+- name: Создание пользователя prometheus
+  ansible.builtin.user:
+    name: prometheus
+    shell: /bin/bash
+    group: prometheus
+    system: true
+    create_home: false  
+
+- name: Устанавка - apt-transport-https, gnupg, gnupg1, gnupg2
+  apt:
+    pkg:
+      - apt-transport-https
+      - gnupg
+      - gnupg1
+      - gnupg2
+    state: present
+
+- name: Создание деррикторий
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: prometheus
+    group: prometheus
+  loop:
+    - "/tmp/prometheus"  
+    - "/etc/prometheus"
+
+- name: Загрузка и распаковка Node-exporter
+  unarchive:
+    src: https://github.com/prometheus/node_exporter/releases/download/v1.6.1/node_exporter-1.6.1.linux-amd64.tar.gz
+    dest: /tmp/prometheus
+    creates: /tmp/prometheus/node_exporter-1.6.1.linux-amd64
+    remote_src: yes
+
+- name: Копирование конфигурационных файлов из распакованного архива Node-exporter
+  copy: 
+    src: /tmp/prometheus/node_exporter-1.6.1.linux-amd64/node_exporter
+    dest: /usr/local/bin
+    remote_src: yes
+    mode: 0755
+    owner: prometheus 
+    group: prometheus 
+ 
+- name: Добавление системного файла Node-exporter в систему
+  template:
+    src: templates/node_exporter.service
+    dest: /etc/systemd/system/node_exporter.service
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Обновление конфигурации systemd и запуск Node-exporter
+  systemd:
+    daemon_reload: true
+    name: node_exporter.service
+    state: started
+    enabled: yes
+#---------------------------------------
+
+

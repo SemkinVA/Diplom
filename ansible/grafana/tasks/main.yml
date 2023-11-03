@@ -1,0 +1,30 @@
+---
+#-----------Установка Grafana------------
+- name: Обновление кэша APT
+  apt:
+    update_cache: true
+
+- name: Устанавка - apt-transport-https, gnupg, gnupg1, gnupg2, adduser, libfontconfig1, ca-certificates
+  apt:
+    pkg:
+      - apt-transport-https
+      - gnupg
+      - gnupg1
+      - gnupg2
+      - adduser 
+      - libfontconfig1
+      - ca-certificates
+    state: present
+
+- name: Установка Grafana
+  ansible.builtin.apt:
+    deb: https://mirror.yandex.ru/mirrors/packages.grafana.com/enterprise/deb/pool/main/g/grafana/grafana_10.2.0_amd64.deb
+
+- name: Обновление конфигурации systemd и запуск Grafana
+  systemd:
+    daemon_reload: true
+    name: grafana-server.service
+    enabled: yes
+    state: started
+
+    #---------------------------------------
