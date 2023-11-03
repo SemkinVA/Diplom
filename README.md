@@ -2,6 +2,8 @@
 
 ---------
 ## Задача
+<details>
+   <summary> Открыть для подробного ознакомления </summary>
 Ключевая задача — разработать отказоустойчивую инфраструктуру для сайта, включающую мониторинг, сбор логов и резервное копирование основных данных. Инфраструктура должна размещаться в [Yandex Cloud](https://cloud.yandex.com/) и отвечать минимальным стандартам безопасности: запрещается выкладывать токен от облака в git. Используйте [инструкцию](https://cloud.yandex.ru/docs/tutorials/infrastructure-management/terraform-quickstart#get-credentials).
 
 
@@ -11,6 +13,7 @@
 Важно: используйте по-возможности **минимальные конфигурации ВМ**:2 ядра 20% Intel ice lake, 2-4Гб памяти, 10hdd, прерываемая. 
 
 Так как прерываемая ВМ проработает не больше 24ч, после сдачи работы на проверку свяжитесь с вашим дипломным руководителем и договоритесь запустить инфраструктуру к указанному времени.
+
 
 ### Сайт
 Создайте две ВМ в разных зонах, установите на них сервер nginx, если его там нет. ОС и содержимое ВМ должно быть идентичным, это будут наши веб-сервера.
@@ -47,8 +50,9 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 ### Резервное копирование
 Создайте snapshot дисков всех ВМ. Ограничьте время жизни snaphot в неделю. Сами snaphot настройте на ежедневное копирование.
+</details>
 
--------
+---------
 
 # Выполнение работы
 
@@ -77,7 +81,190 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 - 5 груп безопасности
 - Резервное копироване дисков
 - документ со списком IP адресов для дальнейшей настройки Ansible
+- на хост Bastion устанавливаются программы: Git и Ansible
+  
+<details>
+<summary> Скриншот окна вывода Terraform Output после завершения</summary>
+   
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
 
-```
+</details>
+<details>
+<summary> Скриншот развернутой инфраструктура Terraform </summary>
+   
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
 
-```
+</details>
+
+## Установка программ
+
+Вся установка и настройка программ происходит c Bastion хоста через playbook Ansible. 
+
+Перед запуском установки необходимо на хосте Bastion произвести: 
+- первичное подключение к другим хостам через SSH, для подтверждения ssh ключа
+- создать деррикторию /etc/ansible 
+- создать в дерриктории /etc/ansibl файл ansible.cfg и внести в него настройки
+- создать в дерриктории /etc/ansibl файл hosts и внести в него настройки хоста, сформированные 08-ip-list.tf
+- в домашней дерриктории через "git clone https://github.com/SemkinVA/Ansible-dipl" скопировать плейбуки для Ansible
+- перейти в каталог ~/Ansible-dipl и произвести ping на хосты командой "ansible all -m ping -v"
+
+Если всё сделано верно и в результате все хосты пингуются, то переходим непосредственно к установке программ на хосты.
+
+Для этого необходимо в дерриктории ~/Ansible-dipl выполнить команду "ansible-playbook install-all-progs.yaml" 
+
+Результатом выполнения плейбука install-all-progs.yaml будет последовательная установ:
+<details>
+<summary> 1 - На хосты webserver1 и webserver2 устанавливается Nginx и вносится изменение в HTML файл </summary>
+   
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+</details>
+<details>
+<summary> 2 - На хост elasticsearch устанавливается Elasticsearch и вносятся правки в настройки </summary>
+   
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+</details>
+<details>
+<summary> 3 - На хосте kibana устанавливается Kibana и вносятся правки в настройки </summary>
+   
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+</details>
+<details>
+<summary> 4 - На хосты webserver1 и webserver2 устанавливается Filebeat и вносятся правки в настройки </summary>
+   
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+</details>
+<details>
+<summary> 5 - На хосте prometheus устанавливается Prometheus и вносятся правки в настройки </summary>
+   
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+</details>
+<details>
+<summary> 6 - На хосте grafana устанавливается Grafana и вносятся правки в настройки </summary>
+   
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+</details>
+<details>
+<summary> 7 - На хосты webserver1 и webserver2 устанавливается Node-exporters и вносятся правки в настройки </summary>
+   
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+</details>
+<details>
+<summary> 8 - На хосты webserver1 и webserver2 устанавливается Nginx Log Exporter и вносятся правки в настройки </summary>
+   
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+</details>
+
+## Проверяем правильность настройки всех программ
+
+### Проверяем работу сайта через баланстровщик
+
+На хосте Bastion вводим "curl -v 158.160.24.30:80"
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+Или в любом браузере "158.160.24.30:80"
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+### Проверяем работу мониторинга
+
+На хосте prometheus проверяем сбор метрик командой "curl http://192.168.20.15:9090/metrics"
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+На  хостах webserver1 и webserver2 проверяем работу Node-exporters и Nginx Log Exporter
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+Из любого браузера заходим на Grafana по ip: "84.150.48.37:3000" Пользователь: admin пароль: 123456
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+После входа проверяем необходимый Dashboard 
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+<details>
+<summary> Производимые настройки в Grafana </summary>
+Привязываем Prometheus
+   
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+   
+Импортируем Dashboard №1860 "Node Exporter Full" 
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+Отображение: Utilization
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+Отображение: Saturation
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+Отображение: Errors для CPU
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+Отображение: RAM
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+Отображение: диски 
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+Отображение: сеть
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+Отображение: http_response_count_total
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+Отображение: http_response_size_bytes
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+Настройка tresholds
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+</details>
+
+### Проверяем работу сбора Логов
+
+На хосте elasticsearch проверяем работу хоста командой "localhost:9200/_cluster/health?pretty"
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+Из любого браузера заходим на Kibana по ip: "84.158.28.76:5601" 
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+Переходим в Discover и выбиваем необходимые параметры для просмотра
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+
+<details>
+<summary> Производимые настройки в Kibana </summary>
+Переходим в менеджмент Kibana и добавляем новый индекс
+   
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
+</details>
+
+### Проверяем работу резервного копирования дисков
+
+В интерфейсе YandexCloud смотрим информацию по резервному копированию дисков
+
+![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
