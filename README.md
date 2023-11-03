@@ -113,54 +113,14 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 Для этого необходимо в дерриктории ~/Ansible-dipl выполнить команду "ansible-playbook install-all-progs.yaml" 
 
 Результатом выполнения плейбука install-all-progs.yaml будет последовательная установ:
-<details>
-<summary> 1 - На хосты webserver1 и webserver2 устанавливается Nginx и вносится изменение в HTML файл </summary>
-   
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
-
-</details>
-<details>
-<summary> 2 - На хост elasticsearch устанавливается Elasticsearch и вносятся правки в настройки </summary>
-   
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
-
-</details>
-<details>
-<summary> 3 - На хосте kibana устанавливается Kibana и вносятся правки в настройки </summary>
-   
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
-
-</details>
-<details>
-<summary> 4 - На хосты webserver1 и webserver2 устанавливается Filebeat и вносятся правки в настройки </summary>
-   
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
-
-</details>
-<details>
-<summary> 5 - На хосте prometheus устанавливается Prometheus и вносятся правки в настройки </summary>
-   
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
-
-</details>
-<details>
-<summary> 6 - На хосте grafana устанавливается Grafana и вносятся правки в настройки </summary>
-   
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
-
-</details>
-<details>
-<summary> 7 - На хосты webserver1 и webserver2 устанавливается Node-exporters и вносятся правки в настройки </summary>
-   
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
-
-</details>
-<details>
-<summary> 8 - На хосты webserver1 и webserver2 устанавливается Nginx Log Exporter и вносятся правки в настройки </summary>
-   
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
-
-</details>
+1. На хосты webserver1 и webserver2 устанавливается Nginx и вносится изменение в HTML файл
+2. На хост elasticsearch устанавливается Elasticsearch и вносятся правки в настройки 
+3. На хосте kibana устанавливается Kibana и вносятся правки в настройки
+4. На хосты webserver1 и webserver2 устанавливается Filebeat и вносятся правки в настройки
+5. На хосте prometheus устанавливается Prometheus и вносятся правки в настройки
+6. На хосте grafana устанавливается Grafana и вносятся правки в настройки
+7. На хосты webserver1 и webserver2 устанавливается Node-exporters и вносятся правки в настройки
+8. На хосты webserver1 и webserver2 устанавливается Nginx Log Exporter и вносятся правки в настройки
 
 ## Проверяем правильность настройки всех программ
 
