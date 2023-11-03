@@ -162,35 +162,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 ![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
 
-Отображение: Utilization
-
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
-
-Отображение: Saturation
-
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
-
-Отображение: Errors для CPU
-
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
-
-Отображение: RAM
-
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
-
-Отображение: диски 
-
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
-
-Отображение: сеть
-
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
-
-Отображение: http_response_count_total
-
-![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
-
-Отображение: http_response_size_bytes
+Отображение графиков
 
 ![название](https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png)
 
