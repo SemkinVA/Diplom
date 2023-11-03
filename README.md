@@ -128,7 +128,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 На хосте Bastion вводим "curl -v 158.160.128.141:80"
 
-![3е](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/3.png)
+![3](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/3.png)
 
 Или в любом браузере "158.160.128.141:80"
 
@@ -177,7 +177,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 На хосте elasticsearch проверяем работу хоста командой "192,168,20,10:9200/_cluster/health?pretty"
 
-![12]https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/12.png)
+![12](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/12.png)
 
 Из любого браузера заходим на Kibana по ip: "51.250.13.174:5601" 
 
@@ -192,7 +192,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 <summary> Производимые настройки в Kibana </summary>
 Переходим в менеджмент Kibana и добавляем новый индекс
    
-![15]([https://github.com/SemkinVA/12.2-HW/blob/main/12-7.png](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/15.PNG))
+![15](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/15.PNG)
 
 ![16](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/16.PNG)
 </details>
