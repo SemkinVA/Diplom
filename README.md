@@ -146,7 +146,9 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 ![6](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/7.png)
 
-Из любого браузера заходим на Grafana по ip: "158.160.116.109:3000" Пользователь: admin пароль: 123456
+Из любого браузера заходим на Grafana по ip: "158.160.116.109:3000" Пользователь: admin пароль: 123456 
+
+Дополнено: После перезапуска хоста публичный адрес изменился на "158.160.112.170:3000"
 
 ![7](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/8.PNG)
 
@@ -180,6 +182,8 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 ![12](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/12.png)
 
 Из любого браузера заходим на Kibana по ip: "51.250.13.174:5601" 
+
+Дополнено: После перезапуска хоста публичный адрес изменился на "158.160.59.17:5601"
 
 ![13](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/13.PNG)
 
