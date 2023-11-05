@@ -94,6 +94,10 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
    
 ![2](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/2.PNG)
 
+(Дополнено) После двух дней:
+
+![21](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/21.PNG)
+
 </details>
 
 ## Установка программ
@@ -148,7 +152,7 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 Из любого браузера заходим на Grafana по ip: "158.160.116.109:3000" Пользователь: admin пароль: 123456 
 
-Дополнено: После перезапуска хоста публичный адрес изменился на "158.160.112.170:3000"
+Дополнено: После перезапуска хоста публичный адрес изменился на "158.160.106.211:3000"
 
 ![7](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/8.PNG)
 
@@ -177,13 +181,13 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 
 ### Проверяем работу сбора Логов
 
-На хосте elasticsearch проверяем работу хоста командой "192,168,20,10:9200/_cluster/health?pretty"
+На хосте elasticsearch проверяем работу хоста командой "192.168.20.10:9200/_cluster/health?pretty"
 
 ![12](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/12.png)
 
 Из любого браузера заходим на Kibana по ip: "51.250.13.174:5601" 
 
-Дополнено: После перезапуска хоста публичный адрес изменился на "158.160.59.17:5601"
+Дополнено: После перезапуска хоста публичный адрес изменился на "158.160.118.61:5601"
 
 ![13](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/13.PNG)
 
@@ -206,3 +210,5 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 В интерфейсе YandexCloud смотрим информацию по резервному копированию дисков
 
 ![17](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/17.PNG)
+
+![20](https://github.com/SemkinVA/Diplom/blob/main/dipl-scrin/20.PNG)
